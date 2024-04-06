@@ -1,5 +1,16 @@
 function minDate(dates) {
   //write you code here
+const parseDate = dateStr => {
+    const [year, month, day] = dateStr.split('/');
+    return new Date(year, month - 1, day);
+  };
+    const parsedDates = dates.map(parseDate);
+	const minDate = new Date(Math.min(...parsedDates));
+	const year = minDate.getFullYear();
+   const month = String(minDate.getMonth() + 1).padStart(2, '0');
+  const day = String(minDate.getDate()).padStart(2, '0');
+
+  return `${year}/${month}/${day}`;
 }
 
 // Do not change the code
